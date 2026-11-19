@@ -98,7 +98,7 @@ export function defaults(root = ROOT) {
     zcode: { enabled: false, cliPath: '', dataDir: '', defaultModel: null },
     // 顾问连接：选项与拓展坞接入模型保持一致（名称/地址/密钥/模型/推理强度/推理协议/图片/启用）。
     // 每一项的默认值都等于改动前的行为：默认开启、默认收图、默认由接口决定推理强度。
-    claude: { name: 'Claude', baseUrl: '', model: 'claude-opus-5-5', protocol: 'auto', maxTokens: 8192, firstTokenSec: 90, timeoutSec: 900,
+    claude: { name: 'Claude', baseUrl: 'https://api.aisj.ai', model: 'claude-opus-5-5', protocol: 'auto', maxTokens: 8192, firstTokenSec: 90, timeoutSec: 900,
       enabled: true, vision: true, defaultEffort: null, reasoningConfig: null },
     localController: { ...LOCAL_CONTROLLER_DEFAULTS },
     flow: { maxTurns: 6, discussionRounds: 3, maxRounds: 3, consultAfterFails: 2, discussionSkipAfterRetries: 3, stepTimeoutMin: 0, cooldownMin: 30, runChecks: true, codexOpenInDesktop: true,
