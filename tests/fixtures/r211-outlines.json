@@ -1,0 +1,88 @@
+[
+  {
+    "id": 1474,
+    "value": {
+      "core": "单文件 index.html，内联 SVG 分层绘制鹈鹕与自行车，用 CSS 关键帧驱动车轮、曲柄与腿部，实现无缝循环的 2D 骑行动画，无外部依赖、可直接双击打开。",
+      "steps": [
+        "写 index.html 骨架：<svg viewBox> 舞台、背景、分组 <g id> 命名规范",
+        "静态绘制自行车：车架、双轮（辐条）、曲柄踏板、车把与车座",
+        "静态绘制鹈鹕：喙与喙囊、头、身体、翅膀、握把的翅尖、踩踏的腿脚",
+        "为每处关节设 transform-origin 与旋转中心，静态姿态先校准到位",
+        "CSS @keyframes 驱动车轮自转、曲柄 360°、腿脚交替踩踏、身体轻微颠簸",
+        "加暂停/播放与速度控制，并支持 prefers-reduced-motion 降级为静态",
+        "浏览器打开自检：无控制台报错、循环无跳变、缩放不失真"
+      ],
+      "risks": [
+        "关节旋转中心设错导致腿脚与踏板脱节：先用静态姿势对齐，再挂动画",
+        "CSS 与 SMIL 混用易冲突：统一用 CSS 关键帧",
+        "循环首尾不连续出现抖动：首尾关键帧取同值并配合线性缓动",
+        "低端设备动画卡顿：只用 transform/rotate，避免触发布局重排",
+        "无测试环境要求：以浏览器人工打开核验，不引入测试依赖"
+      ],
+      "decisions": [
+        {
+          "id": "route",
+          "option": "单文件 index.html + 内联 SVG + CSS 关键帧动画",
+          "reason": "单文件离线可开、矢量清晰，循环动画用 CSS 关键帧最省代码且易调参",
+          "category": "ordinary",
+          "serious": false
+        },
+        {
+          "id": "sequence",
+          "option": "先静态分层绘制，再校准关节原点，最后挂循环动画",
+          "reason": "先保证静态造型与关节位置正确，再加动画可避免反复返工",
+          "category": "ordinary",
+          "serious": false
+        },
+        {
+          "id": "risk",
+          "option": "命名分组 + 关节原点校准 + reduced-motion 兜底",
+          "reason": "把脱节、抖动与无障碍降级集中处理，代价小且可控",
+          "category": "ordinary",
+          "serious": false
+        }
+      ]
+    }
+  },
+  {
+    "id": 1475,
+    "value": {
+      "core": "单个 HTML 文件，内嵌 SVG 用 CSS/SMIL 动画驱动鹈鹕骑自行车的 2D 循环动画，无需测试。",
+      "steps": [
+        "在工作目录创建 index.html，声明基本结构与视口",
+        "用 SVG path/基本形状绘制自行车：车轮、车架、踏板、车把",
+        "绘制鹈鹕：身体、翅膀、脖子、大喙，骑姿固定在车座上",
+        "加动画：车轮旋转、踏板曲柄转动、翅膀扑动、鹈鹕上下起伏、背景滚动",
+        "浏览器打开人工目检动画效果，微调关键帧时长与元素位置"
+      ],
+      "risks": [
+        "SVG 各部件坐标错位导致鹈鹕与自行车脱节：绘制时统一以车座为锚点定位鹈鹕，部件分组",
+        "SMIL 与 CSS 动画兼容性差异：优先用 CSS transform/keyframes，旋转用 transform-origin 精确定位",
+        "动画元素嵌套层级错误导致车轮绕错轴旋转：为每个活动部件单独设 transform-origin 并先单独验证"
+      ],
+      "decisions": [
+        {
+          "id": "route",
+          "option": "单文件 HTML + 内嵌 SVG + CSS keyframes 动画",
+          "reason": "无外部依赖，双击即可播放，CSS 动画兼容性优于 SMIL",
+          "category": "ordinary",
+          "serious": false
+        },
+        {
+          "id": "sequence",
+          "option": "先静态场景后动画，先部件后组合",
+          "reason": "先保证静态构图正确，再逐个叠加动画便于定位问题",
+          "category": "ordinary",
+          "serious": false
+        },
+        {
+          "id": "risk",
+          "option": "transform-origin 精确锚定 + 分组绘制",
+          "reason": "旋转类动画最常见的失败是绕错误轴心，锚定后各动画可独立调试",
+          "category": "ordinary",
+          "serious": false
+        }
+      ]
+    }
+  }
+]

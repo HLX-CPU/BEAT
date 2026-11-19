@@ -1,0 +1,23 @@
+{
+  "port": 8765,
+  "claude": {
+    "name": "Claude",
+    "baseUrl": "",
+    "model": "",
+    "protocol": "auto",
+    "enabled": false,
+    "vision": true
+  },
+  "codex": {
+    "defaultModel": null,
+    "defaultEffort": null
+  },
+  "deepseek": {
+    "defaultModel": null,
+    "defaultEffort": null
+  },
+  "zcode": {
+    "enabled": false
+  },
+  "dock": []
+}

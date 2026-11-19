@@ -1,0 +1,22 @@
+{
+  "name": "beat",
+  "version": "2.2.125",
+  "private": true,
+  "description": "BEAT 多方协同：一句话办事 · 按需协作 · 独立核验",
+  "type": "module",
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "scripts": {
+    "start": "node src/cli.mjs start",
+    "open": "node src/cli.mjs open",
+    "setup": "node src/cli.mjs setup",
+    "test": "node scripts/test-clean-root.mjs",
+    "check": "node scripts/check-source.mjs",
+    "pretest": "npm run check"
+  },
+  "devDependencies": {
+    "eslint": "10.12.0",
+    "globals": "17.13.0"
+  }
+}

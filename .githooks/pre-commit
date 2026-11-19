@@ -1,0 +1,3 @@
+#!/bin/sh
+# 提交前必须通过源码静态检查（check-source.mjs 自带金丝雀自检）；失败即阻止提交
+node scripts/check-source.mjs || exit 1

@@ -1,0 +1,52 @@
+# ── 凭据与本地配置（严禁入库）──
+secrets.local.json
+config.json
+
+# ── 依赖 ──
+node_modules/
+
+# ── 运行时数据（数据库 / 产物 / 客户工作区，体积大且非源码）──
+data/
+output/
+workspaces/
+.beat-test-artifacts/
+
+# ── 本机内置工具（LibreOffice 便携版等，~1.5GB）──
+tools/
+
+# ── 本机素材（非代码）──
+商品素材/
+
+# ── 内部工作产物：交付报告、验收截图、评测数据，不随源码公开 ──
+交付/
+review-*/
+eval-*/
+*.pdf
+验收-*.png
+
+# ── 开发机专用脚本：含本机绝对路径或内部发布流水线，不随源码公开 ──
+scripts/clean-login-test.mjs
+scripts/control-provider-diagnostic.mjs
+scripts/evaluate-local-controller.mjs
+scripts/resume-local-ds-controller-0450.ps1
+scripts/train-local-ds-curriculum.mjs
+scripts/publish.mjs
+scripts/control-live-queue.mjs
+scripts/control-acceptance-manifest.mjs
+scripts/control-live-smoke.mjs
+
+# ── 本机工具状态 ──
+.claude/
+.workbuddy/
+.zcode/
+undefined/
+%SystemDrive%/
+.git-internal-*/
+
+# ── 内部协作规则与本地启动脚本（不随源码公开）──
+AGENTS.md
+最高指令.md
+交接报告-*.md
+启动协作中心.cmd
+关闭BEAT.cmd
+close-beat.mjs
