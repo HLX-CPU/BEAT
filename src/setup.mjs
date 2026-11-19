@@ -1,4 +1,4 @@
-// 接入：把 beat MCP 注册到 Codex（D:/Codex/config.toml）和 DeepSeek 桌面端（~/.dsh/profiles/desktop/cordis.patch.yml）。
+// 接入：把 beat MCP 注册到 Codex（$CODEX_HOME/config.toml，默认 ~/.codex/config.toml）和 DeepSeek 桌面端（~/.dsh/profiles/desktop/cordis.patch.yml）。
 // 同时清掉旧的 beat / bridge 接入项。改之前都会备份到 data/backups/。
 import fs from 'node:fs';
 import os from 'node:os';

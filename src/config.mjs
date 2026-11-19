@@ -88,7 +88,7 @@ export function defaults(root = ROOT) {
     port: 8765,
     workspace: path.join(root, 'workspaces', 'shared'),
     allowedRoots: [path.join(root, 'workspaces')],
-    codex: { executable: '', home: 'D:/Codex', windowsSandbox: 'unelevated', defaultModel: null, defaultEffort: null },
+    codex: { executable: '', home: '', windowsSandbox: 'unelevated', defaultModel: null, defaultEffort: null },
     // DeepSeek Harness 的安装位置/后台组件/登录配置一律按本机自动发现（见 src/deepseek-runtime.mjs），
     // 不写死开发机路径：客户可能装在任意目录。
     deepseek: { defaultModel: null, defaultEffort: null, executable: '', cli: '', profileFile: '', home: '' },
@@ -98,7 +98,7 @@ export function defaults(root = ROOT) {
     zcode: { enabled: false, cliPath: '', dataDir: '', defaultModel: null },
     // 顾问连接：选项与拓展坞接入模型保持一致（名称/地址/密钥/模型/推理强度/推理协议/图片/启用）。
     // 每一项的默认值都等于改动前的行为：默认开启、默认收图、默认由接口决定推理强度。
-    claude: { name: 'Claude', baseUrl: 'https://api.aisj.ai', model: 'claude-opus-5-5', protocol: 'auto', maxTokens: 8192, firstTokenSec: 90, timeoutSec: 900,
+    claude: { name: 'Claude', baseUrl: '', model: 'claude-opus-5-5', protocol: 'auto', maxTokens: 8192, firstTokenSec: 90, timeoutSec: 900,
       enabled: true, vision: true, defaultEffort: null, reasoningConfig: null },
     localController: { ...LOCAL_CONTROLLER_DEFAULTS },
     flow: { maxTurns: 6, discussionRounds: 3, maxRounds: 3, consultAfterFails: 2, discussionSkipAfterRetries: 3, stepTimeoutMin: 0, cooldownMin: 30, runChecks: true, codexOpenInDesktop: true,
